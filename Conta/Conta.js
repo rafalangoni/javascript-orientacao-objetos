@@ -1,9 +1,15 @@
+//Classe abstrata
 export class Conta{
     constructor(agencia, cliente, saldoInicial){
+        if(this.constructor == Conta){
+            throw new Error ("Não é possível instanciar a classe Conta diretamente!");
+        }
+
         this._agencia = agencia;
         this._cliente = cliente;
         this._saldo = saldoInicial;
     }
+
 
     set cliente(novoCliente){
         if(novoCliente instanceof Cliente){
@@ -15,6 +21,12 @@ export class Conta{
         return this._saldo;
     }
 
+    //Método abstrato, deve ser implementado nas classes filhas
+    sacar(valor){
+        throw new Error("Método sacar deve ser implementado!");
+    }
+
+    //sobrescrita de método com visibilidade protegida, ou seja, somente a classe e filhos enxergam
     _sacar(valor, taxa){
         const valorSacado = valor * taxa;
         if(this._saldo >= valorSacado){
