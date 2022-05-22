@@ -5,6 +5,7 @@ import { ContaPoupanca } from "./Conta/ContaPoupanca.js";
 import { ContaSalario } from "./Conta/ContaSalario.js";
 import { Diretor } from "./Funcionarios/Diretor.js";
 import { SistemaAutenticacao } from "./Funcionarios/SistemaAutenticacao.js";
+import { Gerente } from "./Funcionarios/Gerente.js";
 
 // const rafael = new Cliente("Rafael", 11122233344);
 
@@ -35,9 +36,13 @@ import { SistemaAutenticacao } from "./Funcionarios/SistemaAutenticacao.js";
 
 const diretor = new Diretor("Rafael", 12345678987, 5000);
 diretor.cadastrarSenha("password");
+const diretorEstaLogado = SistemaAutenticacao.login(diretor, "password");
+
+const gerente = new Gerente("João", 65498732122, 10000);
+gerente.cadastrarSenha("teste");
+const gerenteEstaLogado = SistemaAutenticacao.login(gerente, "teste");
 
 const cliente1 = new Cliente("Rafael", 12345678987, 5000);
+const clienteEstaLogado = SistemaAutenticacao.login(cliente1, 5000);
 
-const estaLogado = SistemaAutenticacao.login(cliente1, 5000);
-
-console.log(estaLogado)
+console.log(clienteEstaLogado, diretorEstaLogado, gerenteEstaLogado);

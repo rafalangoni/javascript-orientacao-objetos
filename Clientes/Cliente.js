@@ -12,7 +12,7 @@ export class Cliente{
     }
 
     autenticar(){
-        return false;
+        return true;
     }
 
     constructor(nome, cpf, senha){
